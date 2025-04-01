@@ -9,13 +9,13 @@
     >
     <Page
         id="pageDetail"
-        title="{i18n>titleDetail}"
+        title="{i18n>showDetails}"
     >
         <VBox>
             <f:SimpleForm
                 editable="false"
                 layout="ResponsiveGridLayout"
-                title="{i18n>information}"
+                title="{i18n>supplier}"
                 labelSpanXL="3"
                 labelSpanL="3"
                 labelSpanM="3"
@@ -73,7 +73,12 @@
                 enableAutoColumnWidth="true"
                 editTogglable="false"
             >
-                <smartTable:customToolbar />
+                <smartTable:customToolbar>
+                    <OverflowToolbar design="Transparent">
+                        <ToolbarSpacer/>
+                        <OverflowToolbarButton icon="sap-icon://add-product" tooltip="{i18n>addProduct}" press=".onAddProduct" ariaHasPopup="Dialog"/>
+                    </OverflowToolbar>
+                </smartTable:customToolbar>
             </smartTable:SmartTable>
         </VBox>
     </Page>

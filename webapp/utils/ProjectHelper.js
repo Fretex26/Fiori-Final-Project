@@ -27,10 +27,14 @@ sap.ui.define([
 
         setInitModelLocalData: function (oComponent) { 
             oComponent.setModel(new JSONModel({
-                valueInput:'',
-                selectedKey:'',
-                selectedKeyMulti:[],
+                selectedKeyMulti:[]
             }), 'LocalDataModel')
+        },
+
+        setSupplierProductsData: function (oComponent) { 
+            oComponent.setModel(new JSONModel({
+                supplierProducts:[],
+            }), 'SupplierProductsModel')
         }
     }
 })
