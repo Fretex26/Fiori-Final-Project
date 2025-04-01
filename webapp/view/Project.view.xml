@@ -34,12 +34,14 @@
         </m:Toolbar>
         <Table
             id="suppliersTable"
-            selectionMode="MultiToggle"
+            selectionMode="None"
             rows="{SuppliersList>/}"
             rowMode="{ui>/rowMode}"
             enableCellFilter="{ui>/cellFilterOn}"
             filter="filterPrice"
-            ariaLabelledBy="title">
+            ariaLabelledBy="title"
+            cellClick="onRowPress"
+            enableSelectAll="false">
             <extension>
                 <m:OverflowToolbar style="Clear">
                     <m:Title id="title" text="{i18n>suppliers}"/>

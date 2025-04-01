@@ -9,23 +9,21 @@ sap.ui.define([
 
     return Controller.extend("com.bootcamp.sapui5.finalproject.controller.Project", {
         onInit() {
+
             this.oRouter = this.getOwnerComponent().getRouter()
             this.tableSuppliers()
-
             const oView = this.getView();
             oView.setModel(new JSONModel({
 				rowMode: "Fixed"
 			}), "ui");
+
         },
 
         tableSuppliers: async function () {
-            try {
-                let oDatos = await ProjectHelper.getDataSuppliers();
-                await ProjectHelper.setSuppliersModel(this, oDatos[0].results)
-            } catch (error) {
-                MessageBox.error("Error al obtener productos para tabla.");
-                console.error(error);
-            }
+
+            let oDatos = await ProjectHelper.getDataSuppliers();
+            await ProjectHelper.setSuppliersModel(this, oDatos[0].results)
+
         },
 
         onChange: async function (oEvent) {
@@ -43,6 +41,7 @@ sap.ui.define([
         },
 
         onMultiInputChange: function (oControlEvent) {
+
             let oSource = oControlEvent.getParameters().addedTokens
             let oRemovedSource = oControlEvent.getParameters().removedTokens
 
@@ -69,8 +68,7 @@ sap.ui.define([
         onFilter: async function () {
             
             let oFilter = []
-            let values = this.getOwnerComponent().getModel("LocalDataModel").getData()            
-
+            let values = this.getOwnerComponent().getModel("LocalDataModel").getData()   
             let oTable = this.getView().byId("suppliersTable")
             let oBinding = oTable.getBinding("rows")
 
@@ -84,11 +82,22 @@ sap.ui.define([
         },
 
         onItemPress: function (oEvent) {
+
             let oSource = oEvent.getSource();
             let oContext = oSource.getBindingContext("SuppliersList");
-        
             let supplierID = oContext.getProperty("SupplierID");
             this.oRouter.navTo("detail", { SupplierID: supplierID });
+
+        },
+
+        onRowPress: function (oEvent) {
+
+            let oTable = this.getView().byId("suppliersTable");
+            let iIndex = oEvent.getParameter("rowIndex");
+            let oContext = oTable.getContextByIndex(iIndex);
+            let supplierID = oContext.getProperty("SupplierID")
+            this.oRouter.navTo("detail", { SupplierID: supplierID });
+
         },
         
     });
