@@ -33,7 +33,7 @@ sap.ui.define([
 
         setSupplierProductsData: function (oComponent) { 
             oComponent.setModel(new JSONModel({
-                supplierProducts:[],
+                nameProduct:{}
             }), 'SupplierProductsModel')
         }
     }

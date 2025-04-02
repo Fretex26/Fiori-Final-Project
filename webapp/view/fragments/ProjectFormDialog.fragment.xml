@@ -31,34 +31,28 @@
                 <f:content>
                     <core:Title text="{i18n>fillTheForm}" />
                     <Label text="{i18n>name}" />
-                    <Input required="true" change="onChange"/>
+                    <Input required="true" name="{i18n>name}" change="onChange"/>
                     <Label text="{i18n>category}" />
                     <Select
 						forceSelection="true"
 						selectedKey="{/SelectedProduct2}"
+                        required="true"
+                        name="{i18n>category}"
+                        liveChange="onChange"
 						items="{
 							path: '/Categories',
 							sorter: { path: 'CategoryName' }
 						}">
                         <core:Item key="{CategoryID}" text="{CategoryName}" />
                     </Select>
-                    <Label text="{i18n>category}" />
-                    <Input
-                    id="productInput"
-                    type="Text"
-                    placeholder="Enter Product ..."
-                    showValueHelp="true"
-                    valueHelpRequest=".onValueHelpRequest"
-                    class="sapUiSmallMarginBottom"
-                    width="15rem" />
                     <Label text="{i18n>quantityPerUnit}" />
-                    <Input required="true" change="onChange"/>
+                    <Input required="true" name="{i18n>quantityPerUnit}" change="onChange"/>
                     <Label text="{i18n>unitPrice}" />
-                    <Input required="true" change="onChange"/>
+                    <Input required="true" name="{i18n>unitPrice}" type="Number" change="onChange"/>
                     <Label text="{i18n>unitsInStock}" />
-                    <Input required="true" type="Number" change="onChange"/>
+                    <Input required="true" name="{i18n>unitsInStock}" type="Number" change="onChange"/>
                     <Label text="{i18n>reorderLevel}" />
-                    <Input required="true" type="Number" change="onChange"/>
+                    <Input required="true" name="{i18n>reorderLevel}" type="Number" change="onChange"/>
                 </f:content>
             </f:SimpleForm>
         </content>
@@ -68,7 +62,7 @@
 					<ToolbarSpacer />
 					<Button type="Accept"
 							text="{i18n>save}"
-							press="._generateInvalidUserInput" />
+							press="._onSave" />
 					<Button id="Reject"
 						text="{i18n>reject}"
 						type="Reject"

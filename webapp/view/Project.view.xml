@@ -2,7 +2,8 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:m="sap.m"
 	xmlns="sap.ui.table"
-	xmlns:u="sap.ui.unified">
+	xmlns:u="sap.ui.unified"
+    xmlns:c="sap.ui.core">
     <m:Page id="page" title="{i18n>title}">
         <m:Toolbar height="100px">
             <m:FlexBox direction="Column" alignItems="Start" width="20%">
@@ -32,150 +33,9 @@
 
             <m:Button text="{i18n>textBuscar}" type="Accept" press="onFilter"/>
         </m:Toolbar>
-        <Table
-            id="suppliersTable"
-            selectionMode="None"
-            rows="{SuppliersList>/}"
-            rowMode="{ui>/rowMode}"
-            enableCellFilter="{ui>/cellFilterOn}"
-            filter="filterPrice"
-            ariaLabelledBy="title"
-            cellClick="onRowPress"
-            enableSelectAll="false">
-            <extension>
-                <m:OverflowToolbar style="Clear">
-                    <m:Title id="title" text="{i18n>suppliers}"/>
-                    
-                    <m:SearchField
-                        placeholder="{i18n>searchFieldPlaceholder}"
-                        value="{ui>/globalFilter}"
-                        search="filterGlobally"
-                        width="15rem"/>
-                    <m:ToolbarSpacer/>
-                    <m:ToggleButton
-                        icon="sap-icon://complete"
-                        tooltip="Show available Suppliers only"
-                        press="toggleAvailabilityFilter"
-                        pressed="{ui>/availabilityFilterOn}"/>
-                    <m:ToggleButton
-                        icon="sap-icon://grid"
-                        tooltip="Enable / Disable Cell Filter Functionality"
-                        pressed="{ui>/cellFilterOn}"/>
-                    <m:Button
-                        icon="sap-icon://decline"
-                        tooltip="Clear all filters"
-                        press="clearAllFilters"/>
-                    <m:ToolbarSeparator/>
-                </m:OverflowToolbar>
-            </extension>
-            <columns>
-                <Column
-                    width="11rem"
-                    filterProperty="SupplierID">
-                    <m:Label text="{i18n>supplierID}" />
-                    <template>
-                        <m:Text text="{SuppliersList>SupplierID}" wrapping="false" />
-                    </template>
-                </Column>
-                <Column
-                    width="11rem"
-                    filterProperty="CompanyName">
-                    <m:Label text="{i18n>companyName}" />
-                    <template>
-                        <m:Text text="{SuppliersList>CompanyName}" wrapping="false" />
-                    </template>
-                </Column>
-                <Column
-                    width="11rem"
-                    filterProperty="ContactName"
-                    defaultFilterOperator="StartsWith">
-                    <m:Label text="{i18n>contactName}" />
-                    <template>
-                        <m:Text text="{SuppliersList>ContactName}" wrapping="false" />
-                    </template>
-                </Column>
-                <Column
-                    width="11rem"
-                    filterProperty="ContactTitle"
-                    defaultFilterOperator="StartsWith">
-                    <m:Label text="{i18n>contactTitle}" />
-                    <template>
-                        <m:Text text="{SuppliersList>ContactTitle}" wrapping="false" />
-                    </template>
-                </Column>
-                <Column
-                    width="11rem"
-                    filterProperty="Address"
-                    defaultFilterOperator="StartsWith">
-                    <m:Label text="{i18n>address}" />
-                    <template>
-                        <m:Text text="{SuppliersList>Address}" wrapping="false" />
-                    </template>
-                </Column>
-                <Column
-                    width="11rem"
-                    filterProperty="City"
-                    defaultFilterOperator="StartsWith">
-                    <m:Label text="{i18n>city}" />
-                    <template>
-                        <m:Text text="{SuppliersList>City}" wrapping="false" />
-                    </template>
-                </Column>
-                <Column
-                    width="11rem"
-                    filterProperty="Region"
-                    defaultFilterOperator="StartsWith">
-                    <m:Label text="{i18n>region}" />
-                    <template>
-                        <m:Text text="{SuppliersList>Region}" wrapping="false" />
-                    </template>
-                </Column>
-                <Column
-                    width="11rem"
-                    filterProperty="PostalCode"
-                    defaultFilterOperator="StartsWith">
-                    <m:Label text="{i18n>postalCode}" />
-                    <template>
-                        <m:Text text="{SuppliersList>PostalCode}" wrapping="false" />
-                    </template>
-                </Column>
-                <Column
-                    width="11rem"
-                    filterProperty="Country"
-                    defaultFilterOperator="StartsWith">
-                    <m:Label text="{i18n>country}" />
-                    <template>
-                        <m:Text text="{SuppliersList>Country}" wrapping="false" />
-                    </template>
-                </Column>
-                <Column
-                    width="11rem"
-                    filterProperty="Phone"
-                    defaultFilterOperator="StartsWith">
-                    <m:Label text="{i18n>phone}" />
-                    <template>
-                        <m:Text text="{SuppliersList>Phone}" wrapping="false" />
-                    </template>
-                </Column>
-                <Column width="9rem">
-                    <m:Label text="{i18n>showDetails}" />
-                    <template>
-                        <m:Button text="{i18n>showDetails}" press="onItemPress"/>
-                    </template>
-                </Column>
-            </columns>
-            <footer>
-                <m:OverflowToolbar id="infobar">
-                    <m:Label text="Row Mode:" labelFor="rowMode"/>
-                    <m:SegmentedButton id="rowMode" selectedKey="{ui>/rowMode}">
-                        <m:items>
-                            <m:SegmentedButtonItem icon="sap-icon://locked" key="Fixed" tooltip="Fixed"/>
-                            <m:SegmentedButtonItem icon="sap-icon://restart" key="Auto" tooltip="Auto"/>
-                            <m:SegmentedButtonItem icon="sap-icon://resize-vertical" key="Interactive" tooltip="Interactive"/>
-                        </m:items>
-                    </m:SegmentedButton>
-                </m:OverflowToolbar>
-            </footer>
-        </Table>
+        <c:Fragment
+			fragmentName="com.bootcamp.sapui5.finalproject.view.fragments.SuppliersTable"
+			type="XML"
+		/>
     </m:Page>
 </mvc:View>
