@@ -45,7 +45,7 @@
                 <Column
                     width="11rem"
                     filterProperty="SupplierID">
-                    <m:Label text="{i18n>supplierID}" />
+                    <m:Label text="{i18n>id}" />
                     <template>
                         <m:Text text="{SuppliersList>SupplierID}" wrapping="false" />
                     </template>
